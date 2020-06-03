@@ -28,18 +28,20 @@ app.get("/github", (req, res) => {
                 axios.get(`https://api.github.com/repos/MLH-Fellowship/${repo}/pulls?state=open`).then(pull_res => {
                     const repo_status = {
                         name: repo,
-                        assignee: pull_res.assignee ? null : pull_res.assignees,
-                        reviewers: pull_res.requested_reviewers,
+                        assignee: pull_res.assignee.login,
+                        reviewers: pull_res.requested_reviewers[0].login,
                         created_at: pull_res.created_at,
                         updated_at: pull_res.updated_at
                     }
+
+                    console.log(repo_status)
 
                     all_prs.push(repo_status)
 
                     fs.writeFile("output.json", JSON.stringify(all_prs), "utf8", function (err) {
                         if (err) throw err;
 
-                        console.log("done")
+                        //console.log("done")
                     })
 
                 }).catch(e => console.log(e))
