@@ -176,7 +176,7 @@ class MainPage extends Component {
                                 className="mt-4 ml-3"
                             >
                                 Search
-                        </Button>
+                            </Button>
                         </div>
 
                         <div className="col-6 col-md-4">
