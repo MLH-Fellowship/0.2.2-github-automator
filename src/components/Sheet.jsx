@@ -19,17 +19,17 @@ class Sheet extends Component {
     render() {
         return (
             <Fragment>
-                <table>
-                    <thead>
+                <table className="table">
+                    <thead className="table-head">
                         <tr>
                             {this.props.cols.map((c) => 
                                 <th key={c.key}>{c.name}</th>)
                             }
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="table-body">
                         {this.props.data.map((r,i) => 
-                            <tr key={i}>
+                            <tr key={i} className={`table-row-${i%2===0? '1' : '2'}`}>
                                 {this.props.cols.map(c => 
                                     <td 
                                         key={c.key}>{ r[c.key] }
@@ -37,7 +37,7 @@ class Sheet extends Component {
                             </tr>)}
                     </tbody>
                 </table>
-                <button onClick={this.exportXLSX}>Export data to XLSX</button>
+                <button className="button-export-xlsx" onClick={this.exportXLSX}>Export data to XLSX</button>
             </Fragment>    
         )
     }

@@ -141,30 +141,30 @@ class MainPage extends Component {
 
     render() {
         return (
-            <Fragment>
-                <label>
+            <Fragment className="main">
+                <h1 className="heading">Github Automator</h1>
+                <label className="label-date">
                     {labels[0]}
                 </label>
-                <select onChange={this.setDate} value={this.state.dateValue}>
+                <select className="select-date" onChange={this.setDate} value={this.state.dateValue}>
                     {options[0].map((o, i) => <option value={o} key={i}>{o}</option>)}
                 </select>
-                <label>
+                <label className="label-reviewerValue">
                     {labels[1]}
                     <textarea value={this.state.reviewerValue} onChange={this.setReviewer}/>
                 </label>
-                <input type="submit" value="Search" onClick={this.filterByReviewer}/>
+                <input className="input-search" type="submit" value="Search" onClick={this.filterByReviewer}/>
                 <label>
                     {labels[2]}
                     <textarea value={this.state.podValue} onChange={this.setPod}/>
                 </label>
-                <input type="submit" value="Search" onClick={this.filterByPod}/>
-                <button onClick={this.clearFields}>Clear</button>
+                <input className="input-search" type="submit" value="Search" onClick={this.filterByPod}/>
+                <button className="button-clear-fields" onClick={this.clearFields}>Clear</button>
                 <Sheet  
                     data = {this.sortByLeastRecent(this.state.data)}
                     cols = {cols}
                 />
             </Fragment>
-                
         )
     }
 }
