@@ -233,7 +233,6 @@ class MainPage extends Component {
                     />
                 </Container>
             </Fragment>
-
         )
     }
 }

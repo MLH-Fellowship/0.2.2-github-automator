@@ -27,7 +27,6 @@ class Sheet extends Component {
 
         return (
             <Fragment>
-
                 <TableContainer component={Paper}>
                     <Table stickyHeader aria-label="simple table">
                         <TableHead>
