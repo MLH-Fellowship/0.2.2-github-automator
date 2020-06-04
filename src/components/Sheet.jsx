@@ -1,7 +1,16 @@
 import React, { Component, Fragment } from 'react';
 import XLSX from 'xlsx';
-import '../styles/sheet.css';
+//import '../styles/sheet.css';
 
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
+import Container from '@material-ui/core/Container';
 
 class Sheet extends Component {
 
@@ -17,28 +26,40 @@ class Sheet extends Component {
     }
 
     render() {
+
         return (
             <Fragment>
-                <table>
-                    <thead>
-                        <tr>
-                            {this.props.cols.map((c) => 
-                                <th key={c.key}>{c.name}</th>)
-                            }
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.props.data.map((r,i) => 
-                            <tr key={i}>
-                                {this.props.cols.map(c => 
-                                    <td 
-                                        key={c.key}>{ r[c.key] }
-                                    </td>)}
-                            </tr>)}
-                    </tbody>
-                </table>
-                <button onClick={this.exportXLSX}>Export data to XLSX</button>
-            </Fragment>    
+                <Container maxWidth="lg">
+                    <TableContainer component={Paper}>
+                        <Table stickyHeader aria-label="simple table">
+                            <TableHead>
+                                <TableRow>
+                                    {this.props.cols.map(c => (
+                                        <TableCell key={c.key} align="right">{c.name}</TableCell>
+                                    ))}
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {this.props.data.map((r, i) => (
+                                    <TableRow key={i}>
+                                        {this.props.cols.map(c => (
+                                            <TableCell component="th" scope="row" align="right" key={c.key}>{r[c.key]}</TableCell>
+                                        ))}
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
+                    <Button
+                        onClick={this.exportXLSX}
+                        variant="contained"
+                        color="primary"
+                        className="mt-4"
+                    >
+                        Export data to XLSX
+                        </Button>
+                </Container>
+            </Fragment>
         )
     }
 }

@@ -13,6 +13,8 @@
 
 /amplify
 
+/src/components/misc
+
 # misc
 .DS_Store
 .env.local
