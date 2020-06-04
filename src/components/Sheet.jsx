@@ -14,7 +14,6 @@ import Container from '@material-ui/core/Container';
 
 class Sheet extends Component {
 
-
     exportXLSX = () => {
         let data = this.props.data;
         let cols = this.props.cols.map(c => c["name"]);
@@ -30,6 +29,7 @@ class Sheet extends Component {
         return (
             <Fragment>
                 <Container maxWidth="lg">
+
                     <TableContainer component={Paper}>
                         <Table stickyHeader aria-label="simple table">
                             <TableHead>

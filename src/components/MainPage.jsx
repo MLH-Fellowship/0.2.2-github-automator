@@ -1,6 +1,9 @@
 import React, { Component, Fragment } from 'react'
 import Sheet from './Sheet'
 
+import Navbar from "../images/autogit.png"
+import Container from '@material-ui/core/Container';
+
 const dummyData = [
     ["yahengsu", "aldin11", "0.2.2 Javascript Jellies", "2011-01-26T19:01:12Z", "2020-05-29T19:01:17Z"],
     ["yahengsu", "twistz23", "0.2.2 Javascript Jellies", "2011-01-26T19:01:12Z", "2020-06-01T18:01:14Z"],
@@ -16,11 +19,11 @@ const dummyData = [
 ];
 
 const cols = [
-    {name: "Username", key: 0},
-    {name: "Reviewer", key: 1},
-    {name: "Podname", key: 2},
-    {name: "Created_at", key: 3},
-    {name: "Updated_at", key: 4}
+    { name: "Username", key: 0 },
+    { name: "Reviewer", key: 1 },
+    { name: "Podname", key: 2 },
+    { name: "Created_at", key: 3 },
+    { name: "Updated_at", key: 4 }
 ];
 
 const labels = ["Show PRs from", "Search Reviewer", "Search Podname"];
@@ -42,10 +45,10 @@ class MainPage extends Component {
 
 
     sortByLeastRecent = (data) => {
-        data.sort((a,b) => Date.parse(a[4]) - Date.parse(b[4]));
+        data.sort((a, b) => Date.parse(a[4]) - Date.parse(b[4]));
         return data;
     }
-    
+
     filterByDate = (dateValue) => {
         let now = Date.now();
         switch (dateValue) {
@@ -67,12 +70,12 @@ class MainPage extends Component {
                 });
                 break;
             case options[0][3]:
-                let pastSevenDays = dummyData.filter(a => now - Date.parse(a[4]) < (3600000 * 24 *7));
+                let pastSevenDays = dummyData.filter(a => now - Date.parse(a[4]) < (3600000 * 24 * 7));
                 this.setState({
                     data: pastSevenDays
-                }) ;
+                });
                 break;
-            default: 
+            default:
                 this.setState({
                     data: dummyData
                 })
@@ -83,23 +86,23 @@ class MainPage extends Component {
 
     filterByReviewer = () => {
         const reviewer = this.state.reviewerValue;
-        if(reviewer !== "") {
+        if (reviewer !== "") {
             let filteredData = this.state.data.filter(a => a[1] === reviewer);
             this.setState({
                 data: filteredData
             });
-        } 
+        }
         else {
             this.setState({
                 data: dummyData
             });
         }
-        
+
     }
 
     filterByPod = () => {
         const pod = this.state.podValue;
-        if(pod !== "") {
+        if (pod !== "") {
             let filteredData = this.state.data.filter(a => a[2].includes(pod));
             this.setState({
                 data: filteredData
@@ -142,29 +145,38 @@ class MainPage extends Component {
     render() {
         return (
             <Fragment>
-                <label>
-                    {labels[0]}
-                </label>
-                <select onChange={this.setDate} value={this.state.dateValue}>
-                    {options[0].map((o, i) => <option value={o} key={i}>{o}</option>)}
-                </select>
-                <label>
-                    {labels[1]}
-                    <textarea value={this.state.reviewerValue} onChange={this.setReviewer}/>
-                </label>
-                <input type="submit" value="Search" onClick={this.filterByReviewer}/>
-                <label>
-                    {labels[2]}
-                    <textarea value={this.state.podValue} onChange={this.setPod}/>
-                </label>
-                <input type="submit" value="Search" onClick={this.filterByPod}/>
-                <button onClick={this.clearFields}>Clear</button>
-                <Sheet  
-                    data = {this.sortByLeastRecent(this.state.data)}
-                    cols = {cols}
-                />
+                <Container maxWidth="lg">
+                    <img
+                        src={Navbar}
+                        className="img-fluid text-center"
+                    />
+
+                    <div>
+                        <label>
+                            {labels[0]}
+                        </label>
+                        <select onChange={this.setDate} value={this.state.dateValue}>
+                            {options[0].map((o, i) => <option value={o} key={i}>{o}</option>)}
+                        </select>
+                        <label>
+                            {labels[1]}
+                            <textarea value={this.state.reviewerValue} onChange={this.setReviewer} />
+                        </label>
+                        <input type="submit" value="Search" onClick={this.filterByReviewer} />
+                        <label>
+                            {labels[2]}
+                            <textarea value={this.state.podValue} onChange={this.setPod} />
+                        </label>
+                        <input type="submit" value="Search" onClick={this.filterByPod} />
+                        <button onClick={this.clearFields}>Clear</button>
+                    </div>
+                    <Sheet
+                        data={this.sortByLeastRecent(this.state.data)}
+                        cols={cols}
+                    />
+                </Container>
             </Fragment>
-                
+
         )
     }
 }
