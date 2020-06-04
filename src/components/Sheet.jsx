@@ -10,7 +10,6 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
-import Container from '@material-ui/core/Container';
 
 class Sheet extends Component {
 
@@ -28,37 +27,35 @@ class Sheet extends Component {
 
         return (
             <Fragment>
-                <Container maxWidth="lg">
 
-                    <TableContainer component={Paper}>
-                        <Table stickyHeader aria-label="simple table">
-                            <TableHead>
-                                <TableRow>
+                <TableContainer component={Paper}>
+                    <Table stickyHeader aria-label="simple table">
+                        <TableHead>
+                            <TableRow>
+                                {this.props.cols.map(c => (
+                                    <TableCell key={c.key} align="right">{c.name}</TableCell>
+                                ))}
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {this.props.data.map((r, i) => (
+                                <TableRow key={i}>
                                     {this.props.cols.map(c => (
-                                        <TableCell key={c.key} align="right">{c.name}</TableCell>
+                                        <TableCell component="th" scope="row" align="right" key={c.key}>{r[c.key]}</TableCell>
                                     ))}
                                 </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                {this.props.data.map((r, i) => (
-                                    <TableRow key={i}>
-                                        {this.props.cols.map(c => (
-                                            <TableCell component="th" scope="row" align="right" key={c.key}>{r[c.key]}</TableCell>
-                                        ))}
-                                    </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
-                    </TableContainer>
-                    <Button
-                        onClick={this.exportXLSX}
-                        variant="contained"
-                        color="primary"
-                        className="mt-4"
-                    >
-                        Export data to XLSX
+                            ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+                <Button
+                    onClick={this.exportXLSX}
+                    variant="contained"
+                    color="primary"
+                    className="mt-4"
+                >
+                    Export data to XLSX
                         </Button>
-                </Container>
             </Fragment>
         )
     }

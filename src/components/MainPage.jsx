@@ -3,6 +3,13 @@ import Sheet from './Sheet'
 
 import Navbar from "../images/autogit.png"
 import Container from '@material-ui/core/Container';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
 
 const dummyData = [
     ["yahengsu", "aldin11", "0.2.2 Javascript Jellies", "2011-01-26T19:01:12Z", "2020-05-29T19:01:17Z"],
@@ -152,24 +159,66 @@ class MainPage extends Component {
                     />
 
                     <div>
+
+                        <FormControl style={{ width: "150px" }}>
+                            <InputLabel id="dates">{labels[0]}</InputLabel>
+                            <Select
+                                labelId="dates"
+                                id="date"
+                                value={this.state.dateValue}
+                                onChange={this.setDate}
+                            >
+                                {options[0].map((o, i) => (
+                                    <MenuItem value={o} key={i}>{o}</MenuItem>
+                                ))}
+                            </Select>
+                        </FormControl>
+
                         <label>
-                            {labels[0]}
+                            <TextField
+                                id="standard-basic"
+                                label={labels[1]}
+                                value={this.state.reviewerValue}
+                                onChange={this.setReviewer}
+                            />
                         </label>
-                        <select onChange={this.setDate} value={this.state.dateValue}>
-                            {options[0].map((o, i) => <option value={o} key={i}>{o}</option>)}
-                        </select>
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            type="Submit"
+                            onClick={this.filterByReviewer}
+                        >
+                            Search
+                        </Button>
+
                         <label>
-                            {labels[1]}
-                            <textarea value={this.state.reviewerValue} onChange={this.setReviewer} />
+                            <TextField
+                                id="standard-basic"
+                                label={labels[2]}
+                                value={this.state.podValue}
+                                onChange={this.setPod}
+                            />
                         </label>
-                        <input type="submit" value="Search" onClick={this.filterByReviewer} />
-                        <label>
-                            {labels[2]}
-                            <textarea value={this.state.podValue} onChange={this.setPod} />
-                        </label>
-                        <input type="submit" value="Search" onClick={this.filterByPod} />
-                        <button onClick={this.clearFields}>Clear</button>
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            type="Submit"
+                            onClick={this.filterByPod}
+                        >
+                            Search
+                        </Button>
+
+
+                        <Button
+                            variant="contained"
+                            color="secondary"
+                            type="Submit"
+                            onClick={this.clearFields}
+                        >
+                            Clear
+                        </Button>
                     </div>
+
                     <Sheet
                         data={this.sortByLeastRecent(this.state.data)}
                         cols={cols}
