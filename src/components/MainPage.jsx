@@ -158,65 +158,73 @@ class MainPage extends Component {
                         className="img-fluid text-center"
                     />
 
-                    <div>
-
-                        <FormControl style={{ width: "150px" }}>
-                            <InputLabel id="dates">{labels[0]}</InputLabel>
-                            <Select
-                                labelId="dates"
-                                id="date"
-                                value={this.state.dateValue}
-                                onChange={this.setDate}
+                    <div className="row mb-4">
+                        <div className="col-6 col-md-4">
+                            <label>
+                                <TextField
+                                    id="standard-basic"
+                                    label={labels[1]}
+                                    value={this.state.reviewerValue}
+                                    onChange={this.setReviewer}
+                                />
+                            </label>
+                            <Button
+                                variant="contained"
+                                color="primary"
+                                type="Submit"
+                                onClick={this.filterByReviewer}
+                                className="mt-4 ml-3"
                             >
-                                {options[0].map((o, i) => (
-                                    <MenuItem value={o} key={i}>{o}</MenuItem>
-                                ))}
-                            </Select>
-                        </FormControl>
-
-                        <label>
-                            <TextField
-                                id="standard-basic"
-                                label={labels[1]}
-                                value={this.state.reviewerValue}
-                                onChange={this.setReviewer}
-                            />
-                        </label>
-                        <Button
-                            variant="contained"
-                            color="primary"
-                            type="Submit"
-                            onClick={this.filterByReviewer}
-                        >
-                            Search
+                                Search
                         </Button>
+                        </div>
 
-                        <label>
-                            <TextField
-                                id="standard-basic"
-                                label={labels[2]}
-                                value={this.state.podValue}
-                                onChange={this.setPod}
-                            />
-                        </label>
-                        <Button
-                            variant="contained"
-                            color="primary"
-                            type="Submit"
-                            onClick={this.filterByPod}
-                        >
-                            Search
+                        <div className="col-6 col-md-4">
+                            <label>
+                                <TextField
+                                    id="standard-basic"
+                                    label={labels[2]}
+                                    value={this.state.podValue}
+                                    onChange={this.setPod}
+                                />
+                            </label>
+                            <Button
+                                variant="contained"
+                                color="primary"
+                                type="Submit"
+                                onClick={this.filterByPod}
+                                className="mt-4 ml-3"
+                            >
+                                Search
+                            </Button>
+                        </div>
+
+                        <div className="col-6 col-md-4">
+
+                            <FormControl style={{ width: "150px" }} className="mt-3">
+                                <InputLabel id="dates">{labels[0]}</InputLabel>
+                                <Select
+                                    labelId="dates"
+                                    id="date"
+                                    value={this.state.dateValue}
+                                    onChange={this.setDate}
+                                >
+                                    {options[0].map((o, i) => (
+                                        <MenuItem value={o} key={i}>{o}</MenuItem>
+                                    ))}
+                                </Select>
+                            </FormControl>
+
+                            <Button
+                                variant="contained"
+                                color="secondary"
+                                type="Submit"
+                                onClick={this.clearFields}
+                                className="mt-4 ml-3"
+                            >
+                                Clear
                         </Button>
-
-
-                        <Button
-                            variant="contained"
-                            color="secondary"
-                            type="Submit"
-                            onClick={this.clearFields}
-                        >
-                            Clear
-                        </Button>
+                        </div>
                     </div>
 
                     <Sheet
