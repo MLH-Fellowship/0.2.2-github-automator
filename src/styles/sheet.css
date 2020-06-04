@@ -1,8 +1,32 @@
+th {
+    border-bottom: solid 1px black;
+}
+
 table, th, td {
-    border: solid 1px black;
     padding: 15px;
+
 }
 
 table {
+
     border-collapse: collapse;
+    margin: 25px auto;
+    text-align: left;
+}
+
+.table-head {
+    background: #cccccc;
+}
+
+.table-row-1,  .table-row-2 {
+    color: #333;
+    background: #fff;
+}
+
+button {
+    width: 100px;
+    height: 50px;
+    border-radius: 5px;
+    border: 1px;
+    margin: 10px;
 }
