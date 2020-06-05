@@ -1,68 +1,27 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Welcome to AutoGit
 
-## Available Scripts
+We’re AutoGit, a platform focused on providing an all-in-one overview of Pull Requests, Commits, and Issues for organizations (like the MLH Fellowship).
 
-In the project directory, you can run:
+## Overview
 
-### `yarn start`
+AutoGit was created by William, YaHeng, and Kirby. We’re from Canada and the United States. With organizations like the MLH Fellowship, it focused on contributing to large open-sourced projects, we thought it would be a good idea to have an app that will keep tabs on all the activity that’s happening within the fellowship. The number of pull requests and code reviews might get out-of-hand as we heavily contribute for the next 12 weeks, so instead of digging through your Github notifications and emails, we make it simple to view everything all at once.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+To put this in perspective, we created a lightweight application (which you can see here):
+[insert showcasing demo]
+Building this app came with several challenges such as encountering a rate-limiting issue from Github, our next steps would be to fully integrate the Github API into our platform so that we can scale this service and hopefully push it into production. Other features that we’ve been considering include deploying a Discord Bot that’ll enable you to create issues and comment directly from Discord.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
 
-### `yarn test`
+## Technologies
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+AutoGit was created using SheetJS, AWS Amplify, and Docsify. We used SheetJS to display the tables of info and Docisfy to write up an onboarding guide for users. The service was hosted with AWS Amplify, which will provide the scalability that we need if we scale in the future. All of this was hosted via our Github Repo (link down here on the screen) where we used the features of Github like branches for individual features, creating issues of what needs to get done, and setting up pull requests when we need to merge features.
 
-### `yarn build`
+## Roles
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+For example, William was responsible for working with AWS Amplify and working with the Github API. That included tasks like making the API calls to fetch the data from Github, as well as setting up Amplify to work with our backend. YaHeng created all the tables with SheetJS and worked on the UI layout, which included tasks like building the filtering functionality and export options. Kirby worked on the documentation and deployment with Docsify and Amplify, which includes creating the user manual and serving our documentation through Amplify.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Thank you
+We’re in a time where remote collaboration and productivity tools are used more than ever, and with AutoGit, we hope to declutter your inbox of Github notifications and provide a minimalistic view of everything that you need to get done.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Contribute and Setup
 
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Here are the links on how to [contribute](https://github.com/MLH-Fellowship/0.2.2-github-automator/blob/master/contributing.md) and [setup](https://github.com/MLH-Fellowship/0.2.2-github-automator/blob/master/setup.md).
